@@ -5,12 +5,18 @@ import { notFound } from "next/navigation";
 import {
   AirVent,
   Bath,
+  BedDouble,
   CalendarDays,
   Car,
   Check,
+  ChevronLeft,
+  ChevronRight,
+  Clock,
   Coffee,
   ConciergeBell,
+  Crown,
   Gift,
+  Hotel,
   Instagram,
   LockKeyhole,
   Mail,
@@ -20,11 +26,11 @@ import {
   ShieldCheck,
   Sparkles,
   Tv,
+  Users,
   WashingMachine,
   Wifi,
   Wine
 } from "lucide-react";
-import { BookingCard } from "@/components/booking-card";
 import { BlogCard, SuiteCards } from "@/components/cards";
 import { FAQAccordion } from "@/components/accordion";
 import { GalleryLightbox } from "@/components/gallery-lightbox";
@@ -413,19 +419,188 @@ function FAQPage() {
 }
 
 function BookNowPage() {
+  const calendarDays = [
+    "30",
+    "31",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
+    "18",
+    "19",
+    "20",
+    "21",
+    "22",
+    "23",
+    "24",
+    "25",
+    "26",
+    "27",
+    "28",
+    "29",
+    "30",
+    "31",
+    "1",
+    "2"
+  ];
+  const times = ["9:00 AM", "11:30 AM", "2:00 PM", "5:30 PM"];
+
   return (
     <main>
-      <PageHero eyebrow="Book Now" title="Reserve a stay shaped around your dates, preferences, and pace" intro="Search availability or ask reservations to create a private itinerary for suites, dining, spa, and transfers." image={images.suite} />
-      <section className="section-y bg-ivory">
-        <div className="luxury-container grid gap-8 lg:grid-cols-[1fr_0.8fr]">
-          <BookingCard />
-          <div className="rounded-[36px] bg-white p-7 shadow-soft">
-            <h2 className="font-heading text-4xl text-olive">Reservation Desk</h2>
-            <div className="mt-6 grid gap-4">
-              <p className="flex gap-3 text-charcoal/70"><Phone className="h-5 w-5 text-gold" /> {hotel.phone}</p>
-              <p className="flex gap-3 text-charcoal/70"><Mail className="h-5 w-5 text-gold" /> {hotel.email}</p>
-              <p className="flex gap-3 text-charcoal/70"><CalendarDays className="h-5 w-5 text-gold" /> Private arrivals, long stays, and event blocks available.</p>
-              <p className="flex gap-3 text-charcoal/70"><ShieldCheck className="h-5 w-5 text-gold" /> Secure booking, payment-ready architecture, and CMS-ready offers.</p>
+      <section className="bg-ivory pt-28">
+        <div className="luxury-container">
+          <div className="mb-10 flex flex-col items-center gap-3 text-center">
+            <span className="grid h-14 w-14 place-items-center rounded-full bg-olive text-gold shadow-soft">
+              <Crown className="h-7 w-7" />
+            </span>
+            <p className="eyebrow">Aurum Grand Reservations</p>
+            <h1 className="font-heading text-5xl text-olive md:text-7xl">Book Your Stay</h1>
+          </div>
+
+          <div className="relative min-h-[430px] overflow-hidden rounded-[40px] shadow-soft">
+            <Image src={images.suite} alt="Luxury hotel suite booking" fill priority sizes="100vw" className="object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-olive/70 via-charcoal/12 to-white/5" />
+            <div className="absolute bottom-0 left-0 max-w-xl bg-white/88 p-8 backdrop-blur-xl md:p-12">
+              <p className="eyebrow mb-3">Private Reservation</p>
+              <h2 className="font-heading text-4xl text-olive">Reserve with our concierge</h2>
+              <p className="mt-4 leading-8 text-charcoal/66">Choose your preferred arrival date, time, suite style, and guest count. Our team will confirm your tailored stay plan.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-y bg-white">
+        <div className="luxury-container grid gap-8 lg:grid-cols-[0.45fr_1fr]">
+          <aside className="rounded-[36px] bg-champagne/45 p-8 shadow-soft lg:p-10">
+            <div className="mb-9">
+              <p className="eyebrow mb-3">By Email</p>
+              <p className="text-lg font-medium text-olive">{hotel.email}</p>
+            </div>
+            <div className="mb-9">
+              <p className="eyebrow mb-3">By Phone</p>
+              <p className="text-lg font-medium text-olive">{hotel.phone}</p>
+            </div>
+            <div className="mb-9">
+              <p className="eyebrow mb-3">By Form</p>
+              <p className="leading-8 text-charcoal/68">Use the booking calendar to request a suite consultation. If your preferred slot is full, our concierge will suggest the nearest private availability.</p>
+            </div>
+            <div className="mb-9">
+              <p className="eyebrow mb-3">Hours</p>
+              <p className="text-charcoal/72">Mon-Fri, 9am-8pm IST</p>
+            </div>
+            <div className="rounded-[28px] bg-white p-5">
+              <p className="mb-3 flex items-center gap-2 font-heading text-2xl text-olive">
+                <Hotel className="h-5 w-5 text-gold" />
+                Suite Desk
+              </p>
+              <p className="text-sm leading-7 text-charcoal/65">Ocean suites, private villas, spa schedules, dining reservations, and airport transfers can be combined into one itinerary.</p>
+            </div>
+          </aside>
+
+          <div className="rounded-[40px] bg-ivory p-5 shadow-soft md:p-8 lg:p-10">
+            <div className="mb-9 grid gap-5 border-b border-champagne pb-8 md:grid-cols-[1fr_auto] md:items-start">
+              <div>
+                <p className="eyebrow mb-3">Luxury Stay Consultation</p>
+                <h2 className="font-heading text-4xl text-olive">Aurum Grand Private Booking</h2>
+                <div className="mt-4 flex flex-wrap gap-4 text-sm text-charcoal/66">
+                  <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-gold" /> 45 minutes</span>
+                  <span className="flex items-center gap-2"><BedDouble className="h-4 w-4 text-gold" /> Suite selection</span>
+                  <span className="flex items-center gap-2"><Users className="h-4 w-4 text-gold" /> Guest planning</span>
+                </div>
+              </div>
+              <span className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-olive shadow-soft">Asia/Kolkata</span>
+            </div>
+
+            <div className="grid gap-10 xl:grid-cols-[1fr_0.42fr]">
+              <div>
+                <div className="mb-7 flex items-center justify-between">
+                  <button type="button" aria-label="Previous month" className="grid h-11 w-11 place-items-center rounded-full bg-white text-olive shadow-soft">
+                    <ChevronLeft className="h-5 w-5" />
+                  </button>
+                  <h3 className="font-heading text-3xl text-olive">August 2026</h3>
+                  <button type="button" aria-label="Next month" className="grid h-11 w-11 place-items-center rounded-full bg-white text-olive shadow-soft">
+                    <ChevronRight className="h-5 w-5" />
+                  </button>
+                </div>
+
+                <div className="grid grid-cols-7 gap-2 text-center text-xs font-bold uppercase tracking-[0.12em] text-charcoal/48">
+                  {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
+                    <span key={day}>{day}</span>
+                  ))}
+                </div>
+                <div className="mt-3 grid grid-cols-7 gap-2">
+                  {calendarDays.map((day, index) => {
+                    const isSelected = day === "20";
+                    const isMuted = index < 2 || index > 32;
+                    return (
+                      <button
+                        key={`${day}-${index}`}
+                        type="button"
+                        className={`aspect-square rounded-full text-sm font-semibold transition ${
+                          isSelected
+                            ? "bg-gold text-white shadow-glow"
+                            : isMuted
+                              ? "text-charcoal/22 hover:bg-white"
+                              : "text-charcoal/72 hover:bg-white hover:text-gold"
+                        }`}
+                      >
+                        {day}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                <div className="mt-10 grid gap-4 sm:grid-cols-3">
+                  {[
+                    { label: "Check In", value: "20 Aug 2026" },
+                    { label: "Check Out", value: "24 Aug 2026" },
+                    { label: "Guests", value: "2 Adults" }
+                  ].map((item) => (
+                    <label key={item.label} className="rounded-[28px] bg-white p-5 shadow-soft">
+                      <span className="eyebrow">{item.label}</span>
+                      <input className="mt-3 w-full bg-transparent font-semibold text-olive outline-none" defaultValue={item.value} />
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <div className="rounded-[32px] bg-white p-6 shadow-soft">
+                  <p className="eyebrow mb-3">Thursday</p>
+                  <h3 className="font-heading text-3xl text-olive">August 20, 2026</h3>
+                  <div className="mt-6 grid gap-3">
+                    {times.map((time) => (
+                      <button key={time} type="button" className="rounded-2xl border border-champagne px-5 py-4 text-sm font-semibold text-olive transition hover:border-gold hover:bg-champagne/45">
+                        {time}
+                      </button>
+                    ))}
+                  </div>
+                  <button type="button" className="mt-6 w-full rounded-full bg-gold px-6 py-4 font-bold text-white shadow-glow transition hover:bg-olive">
+                    Submit and Finish
+                  </button>
+                </div>
+                <div className="mt-5 rounded-[28px] bg-olive p-6 text-white">
+                  <p className="font-heading text-2xl text-gold">Direct booking benefits</p>
+                  <div className="mt-4 grid gap-3 text-sm text-white/72">
+                    <p className="flex gap-2"><Check className="h-4 w-4 text-gold" /> Best suite matching</p>
+                    <p className="flex gap-2"><Check className="h-4 w-4 text-gold" /> Airport pickup planning</p>
+                    <p className="flex gap-2"><Check className="h-4 w-4 text-gold" /> Dining and spa priority</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
